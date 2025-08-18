@@ -118,48 +118,12 @@ class _WebViewScreenState extends State<WebViewScreen> {
       child: Scaffold(
         backgroundColor: const Color(0xFFFAF0E6), // Warm cream
         appBar: AppBar(
-          title: Row(
-            children: [
-              // Coffee cup icon in title
-              Icon(
-                Icons.local_cafe,
-                color: const Color(0xFFFAF0E6),
-                size: 24,
-              ),
-              const SizedBox(width: 8),
-              const Text(
-                'Urban Brew Cafe',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-              ),
-            ],
-          ),
           backgroundColor: const Color(0xFF8B4513), // Saddle Brown
-          foregroundColor: const Color(0xFFFAF0E6), // Cream text
-          elevation: 4,
-          shadowColor: const Color(0xFF654321).withOpacity(0.5),
-          leading: IconButton(
-            icon: Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: const Color(0xFFD2691E).withOpacity(0.2),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: const Icon(
-                Icons.arrow_back_ios,
-                color: Color(0xFFFAF0E6),
-              ),
-            ),
-            onPressed: () async {
-              if (await controller.canGoBack()) {
-                controller.goBack();
-              } else {
-                Navigator.of(context).pop();
-              }
-            },
-          ),
+          elevation: 0,
+          toolbarHeight: 25, // Reduced height for minimal space
+          automaticallyImplyLeading: false, // Remove back button
+          // Empty title to just provide spacing
+          title: null,
           actions: [
             if (Platform.isIOS)
               PopupMenuButton<String>(
@@ -172,6 +136,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
                   child: const Icon(
                     Icons.more_vert,
                     color: Color(0xFFFAF0E6),
+                    size: 20, // Smaller icon
                   ),
                 ),
                 color: const Color(0xFFFAF0E6),
